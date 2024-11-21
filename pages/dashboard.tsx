@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import Footer from '../src/components/Footer/Footer';
 import Header from '../src/components/Header/Header';
-import styles from '../src/styles/pages/OficinaProxima.module.css';
+import styles from '../src/styles/pages/Dashboard.module.css';
 import Button from '../src/components/Button/Button';
 import Input from '../src/components/Input/Input';
 import MenuLateral from '../src/components/MenuLateral/MenuLateral';

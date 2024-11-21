@@ -3,7 +3,7 @@ import { getConnection } from './db';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const { email, senha, confsenha, nome, cpf, telefone, cep, modelo, ano, placa, cor } = req.body;
+        const { email, senha, confsenha, nome, cpf, cargo, departamento } = req.body;
 
         if (!email || !senha || !nome) {
             return res.status(400).json({ error: 'Email, senha e nome são obrigatórios.' });
@@ -16,9 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
             const connection = await getConnection();
             const result = await connection.execute(
-                `INSERT INTO cadastro (email, senha, confsenha, nome, cpf, telefone, cep, modelo, ano, placa, cor, data_cadastro) 
-                 VALUES (:email, :senha, :confsenha, :nome, :cpf, :telefone, :cep, :modelo, :ano, :placa, :cor, SYSDATE)`,
-                { email, senha, confsenha, nome, cpf, telefone, cep, modelo, ano, placa, cor },
+                `INSERT INTO cadastro (email, senha, confsenha, nome, cpf, cargo, departamento, data_cadastro) 
+                 VALUES (:email, :senha, :confsenha, :nome, :cpf, :cargo, :departamento, SYSDATE)`,
+                { email, senha, confsenha, nome, cpf, cargo, departamento, },
                 { autoCommit: true }
             );
 

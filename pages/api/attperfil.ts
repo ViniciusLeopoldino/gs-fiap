@@ -3,29 +3,21 @@ import { getConnection } from './db';
 
 const updateUserData = async (userData: any) => {
   const connection = await getConnection();
-  const { email, nome, cpf, telefone, cep, modelo, ano, placa, cor } = userData;
+  const { email, nome, cpf, cargo, departamento } = userData;
 
   // Ajuste a consulta conforme sua tabela
   const result = await connection.execute(
     `UPDATE cadastro SET
       nome = :nome,
       cpf = :cpf,
-      telefone = :telefone,
-      cep = :cep,
-      modelo = :modelo,
-      ano = :ano,
-      placa = :placa,
-      cor = :cor
+      cargo = :cargo,
+      departamento = :departamento
     WHERE email = :email`,
     {
       nome,
       cpf,
-      telefone,
-      cep,
-      modelo,
-      ano,
-      placa,
-      cor,
+      cargo,
+      departamento,
       email,
     }
   );
