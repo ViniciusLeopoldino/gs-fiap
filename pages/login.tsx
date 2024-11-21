@@ -42,6 +42,7 @@ const Login: React.FC = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
+        <h1>Wise Power</h1>    
         <Image src={loginImage} alt="Login" className={styles.loginImage} width={50} height={50} />
       </header>
       <main className={styles.main}>
