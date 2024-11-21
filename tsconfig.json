@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",                     // Alvo do compilador
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"                            // Versão do ECMAScript a ser utilizada
+    ],
+    "allowJs": true,                     // Permitir arquivos JavaScript
+    "skipLibCheck": true,                // Ignorar checagem de tipo em arquivos de definição
+    "strict": true,                       // Ativar todas as verificações rigorosas de tipo
+    "noEmit": true,                       // Não gerar arquivos .js
+    "incremental": true,                  // Habilitar compilação incremental
+    "module": "esnext",                  // Tipo de módulo a ser utilizado
+    "esModuleInterop": true,             // Habilitar interoperabilidade entre módulos
+    "moduleResolution": "node",          // Estratégia de resolução de módulos
+    "resolveJsonModule": true,           // Permitir importação de arquivos JSON
+    "isolatedModules": true,              // Cada arquivo deve ser tratado como um módulo
+    "jsx": "preserve"                    // Preservar JSX para que o Next.js possa processá-lo
+  },
+  "include": [
+    "next-env.d.ts",                     // Definições de tipos específicas do Next.js
+    "**/*.ts",
+    "**/*.tsx"
+, "pages/api/cadastro.ts"  ],
+  "exclude": [
+    "node_modules"                       // Diretórios a serem excluídos da compilação
+  ]
+}
+

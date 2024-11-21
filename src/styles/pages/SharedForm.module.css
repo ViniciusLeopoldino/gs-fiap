@@ -1,0 +1,84 @@
+/* unitizando para menu perfil e manutencao */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-left: 200px; 
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px; 
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      margin-left: 0;
+      min-height: auto; 
+    }
+  
+    .dataContainer {
+      flex-direction: column;
+    }
+  
+    .inputGroup {
+      margin: 10px;
+      width: 100%; 
+    }
+  
+    .inputField {
+      margin-bottom: 10px; 
+      width: 100%; 
+    }
+  
+    .inputGroup input,
+    .inputGroup select {
+      width: 100%; 
+    }
+  }
+  
+  .dataContainer {
+    display: flex; 
+    width: 100%; 
+  }
+  
+  .inputGroup {
+    margin: 10px; 
+  }
+  
+  .inputGroup:last-child {
+    margin-right: 0; 
+  }
+  
+  .inputGroup input,
+  .inputGroup select {
+    padding: 10px;
+    border-radius: 50px; 
+    border: 1px solid #6363639d; 
+    box-sizing: border-box;
+    color: black; 
+  }
+  
+  .inputGroup input:focus {
+    border-color: #003350; 
+    outline: none; 
+  }
+  
+  .inputField {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 50px; 
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc; 
+    margin-bottom: 10px; 
+    box-sizing: border-box; 
+    color: #333; 
+  }
+  
