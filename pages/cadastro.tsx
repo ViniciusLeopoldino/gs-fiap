@@ -16,12 +16,8 @@ const Cadastro: React.FC = () => {
   const [confsenha, setConfsenha] = useState('');
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
-  // const [telefone, setTelefone] = useState('');
-  // const [cep, setCep] = useState('');
   const [cargo, setCargo] = useState('');
-  // const [ano, setAno] = useState('');
   const [departamento, setDepartamento] = useState('');
-  // const [cor, setCor] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false); 
@@ -39,12 +35,6 @@ const Cadastro: React.FC = () => {
       return;
     }
 
-    // const anoNumber = Number(ano);
-    // if (isNaN(anoNumber) || anoNumber <= 0) {
-    //   setErrorMessage('Ano inválido.');
-    //   return;
-    // }
-
     setLoading(true); 
     setErrorMessage(''); 
     setSuccessMessage(''); 
@@ -56,12 +46,8 @@ const Cadastro: React.FC = () => {
         confsenha,
         nome,
         cpf,
-        // telefone,
-        // cep,
         cargo,
-        // ano: anoNumber,
         departamento,
-        // cor,
       });
 
       if (response.status === 201) {
@@ -141,28 +127,6 @@ const Cadastro: React.FC = () => {
               onChange={(e) => setCpf(e.target.value)}
             />
           </div>
-          {/* <div className={styles.inputGroup}>
-            <label htmlFor="telefone">Telefone:</label>
-            <Input
-              type="text"
-              id="telefone"
-              name="telefone"
-              placeholder="Telefone"
-              value={telefone}
-              onChange={(e) => setTelefone(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="cep">CEP:</label>
-            <Input
-              type="text"
-              id="cep"
-              name="cep"
-              placeholder="CEP"
-              value={cep}
-              onChange={(e) => setCep(e.target.value)}
-            />
-          </div> */}
           <div className={styles.inputGroup}>
             <label htmlFor="cargo">Cargo:</label>
             <Input
@@ -174,17 +138,6 @@ const Cadastro: React.FC = () => {
               onChange={(e) => setCargo(e.target.value)}
             />
           </div>
-          {/* <div className={styles.inputGroup}>
-            <label htmlFor="ano">Ano:</label>
-            <Input
-              type="number"
-              id="ano"
-              name="ano"
-              placeholder="Ano do veículo"
-              value={ano}
-              onChange={(e) => setAno(e.target.value)}
-            />
-          </div> */}
           <div className={styles.inputGroup}>
             <label htmlFor="departamento">Departamento:</label>
             <Input
@@ -196,17 +149,6 @@ const Cadastro: React.FC = () => {
               onChange={(e) => setDepartamento(e.target.value)}
             />
           </div>
-          {/* <div className={styles.inputGroup}>
-            <label htmlFor="cor">Cor:</label>
-            <Input
-              type="text"
-              id="cor"
-              name="cor"
-              placeholder="Cor do veículo"
-              value={cor}
-              onChange={(e) => setCor(e.target.value)}
-            />
-          </div> */}
           {errorMessage && <p className={styles.error}>{errorMessage}</p>}
           {successMessage && <p className={styles.success}>{successMessage}</p>}
           <div className={styles.buttonGroup}>

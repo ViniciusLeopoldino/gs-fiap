@@ -31,12 +31,8 @@ const Perfil: React.FC = () => {
             confSenha: data[4],
             nome: data[5],
             cpf: data[6],
-            // telefone: data[7],
-            // cep: data[8],
             cargo: data[7],
-            // ano: data[10],
             departamento: data[8],
-            // cor: data[12],
           };
 
           setUserData(userObject);
@@ -105,9 +101,7 @@ const Perfil: React.FC = () => {
           <div className={styles.content}>
           <h2>Dados Cadastrais</h2>
             <div className={styles.dataContainer}>
-            
               <div className={styles.inputGroup}>
-                {/* <h2>Dados Pessoais</h2> */}
                 <p>Nome:</p>
                 <span className={styles.inputField}>
                   {isEditing ? (
@@ -124,25 +118,8 @@ const Perfil: React.FC = () => {
                     userData.cpf
                   )}
                 </span>
-                {/* <p>Telefone:</p>
-                <span className={styles.inputField}>
-                  {isEditing ? (
-                    <input name="telefone" value={userData.telefone} onChange={handleChange} />
-                  ) : (
-                    userData.telefone
-                  )} */}
-                {/* </span> */}
-                {/* <p>CEP:</p>
-                <span className={styles.inputField}>
-                  {isEditing ? (
-                    <input name="cep" value={userData.cep} onChange={handleChange} />
-                  ) : (
-                    userData.cep
-                  )}
-                </span> */}
               </div>
               <div className={styles.inputGroup}>
-                {/* <h2>Dados do Veículo</h2> */}
                 <p>Cargo:</p>
                 <span className={styles.inputField}>
                   {isEditing ? (
@@ -151,14 +128,6 @@ const Perfil: React.FC = () => {
                     userData.cargo
                   )}
                 </span>
-                {/* <p>Ano:</p>
-                <span className={styles.inputField}>
-                  {isEditing ? (
-                    <input name="ano" value={userData.ano} onChange={handleChange} />
-                  ) : (
-                    userData.ano
-                  )}
-                </span> */}
                 <p>Departamento:</p>
                 <span className={styles.inputField}>
                   {isEditing ? (
@@ -166,15 +135,7 @@ const Perfil: React.FC = () => {
                   ) : (
                     userData.departamento
                   )}
-                </span> 
-                {/* <p>Cor:</p>
-                <span className={styles.inputField}>
-                  {isEditing ? (
-                    <input name="cor" value={userData.cor} onChange={handleChange} />
-                  ) : (
-                    userData.cor
-                  )}
-                </span>  */}
+                </span>
               </div>
             </div>
             <div className={styles.buttonGroup}>
