@@ -16,10 +16,10 @@
 .logo {
   justify-content: center; 
   display: flex;
-  margin-bottom: 5px;
-  height: 100px;
-  width: 100px;
-  display: block;
+  margin-top: 5px;
+  /* height: 100px; */
+  /* width: 100px; */
+  /* display: block; */
 }
 
 .menuLateral.open {

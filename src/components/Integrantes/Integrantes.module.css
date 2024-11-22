@@ -17,6 +17,12 @@
   text-align: center;
 }
 
+.integranteCard:hover {
+  background-color: #004c7f;
+  transform: translateY(-8px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
 .integranteImage {
   border-radius: 50%;
   width: 150px;

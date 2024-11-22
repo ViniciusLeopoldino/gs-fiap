@@ -22,11 +22,10 @@ const Relatorio: React.FC = () => {
 
   return (
     <>
-      <Header title="Relatório" />
+      <Header title="Relatórios" />
       <div className={styles.container}>
         <MenuLateral />
         <main className={styles.content}>
-          <h2>Relatórios</h2>
           <p>Visualize o relatório abaixo ou baixe em formato Excel.</p>
           <div className={styles.tableContainer}>
             <table className={styles.table}>

@@ -1,85 +1,96 @@
-/* unitizando para menu perfil e manutencao */
-
 .container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border: 2px solid #003350;
-    color: black;
-    padding: 0;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-left: 200px; 
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid #003350; /* Cor principal */
+  color: #333; /* Cor do texto */
+  padding: 1rem;
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+  margin-left: 200px;
+  transition: 0.3s ease-in-out; /* Transição suave */
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.dataContainer {
+  display: flex;
+  width: 100%;
+  gap: 1rem; /* Espaçamento entre os grupos */
+}
+
+.inputGroup {
+  margin: 10px;
+  flex: 1;
+}
+
+.inputGroup:last-child {
+  margin-right: 0;
+}
+
+.inputGroup input,
+.inputGroup select {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 50px; /* Bordas arredondadas para inputs */
+  border: 1px solid rgba(99, 99, 99, 0.62); /* Cor da borda */
+  background-color: white; /* Fundo branco */
+  color: #333; /* Cor do texto */
+  box-sizing: border-box;
+  transition: 0.3s ease-in-out;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  border-color: #003350; /* Destaque na cor principal */
+  box-shadow: 0 0 8px rgba(0, 51, 80, 0.5); /* Sombra ao focar */
+  outline: none;
+}
+
+.inputField {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 50px; /* Bordas arredondadas */
+  background-color: #f0f0f0; /* Fundo claro */
+  border: 1px solid #ccc; /* Cor da borda */
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  color: #333; /* Cor do texto */
+  transition: 0.3s ease-in-out;
+}
+
+.inputField:focus {
+  border-color: #003350; /* Destaque ao focar */
+  box-shadow: 0 0 8px rgba(0, 51, 80, 0.5);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0;
+    padding: 1rem;
   }
-  
-  .buttonGroup {
-    display: flex;
-    justify-content: center; 
-    margin-top: 20px; 
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      margin-left: 0;
-      min-height: auto; 
-    }
-  
-    .dataContainer {
-      flex-direction: column;
-    }
-  
-    .inputGroup {
-      margin: 10px;
-      width: 100%; 
-    }
-  
-    .inputField {
-      margin-bottom: 10px; 
-      width: 100%; 
-    }
-  
-    .inputGroup input,
-    .inputGroup select {
-      width: 100%; 
-    }
-  }
-  
+
   .dataContainer {
-    display: flex; 
-    width: 100%; 
+    flex-direction: column;
   }
-  
+
   .inputGroup {
-    margin: 10px; 
+    margin: 10px 0;
   }
-  
-  .inputGroup:last-child {
-    margin-right: 0; 
-  }
-  
+
   .inputGroup input,
   .inputGroup select {
-    padding: 10px;
-    border-radius: 50px; 
-    border: 1px solid #6363639d; 
-    box-sizing: border-box;
-    color: black; 
-  }
-  
-  .inputGroup input:focus {
-    border-color: #003350; 
-    outline: none; 
-  }
-  
-  .inputField {
-    display: block;
     width: 100%;
-    padding: 10px;
-    border-radius: 50px; 
-    background-color: #f0f0f0; 
-    border: 1px solid #ccc; 
-    margin-bottom: 10px; 
-    box-sizing: border-box; 
-    color: #333; 
   }
-  
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
