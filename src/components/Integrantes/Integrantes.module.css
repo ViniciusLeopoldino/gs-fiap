@@ -3,8 +3,9 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-left: 200px; 
-  width: calc(100% - 200px); 
+  margin-left: 200px;
+  width: calc(100% - 200px);
+  transition: all 0.3s ease-in-out;
 }
 
 .integranteCard {
@@ -12,9 +13,10 @@
   background-color: #003350;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  padding: 20px;
   width: 200px;
   text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .integranteCard:hover {
@@ -41,13 +43,48 @@
 .socialIcon {
   color: #fff;
   text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
 }
 
 .socialIcon:hover {
-  color: #000000; /* Para LinkedIn */
+  color: #000;
 }
 
 .socialIcon:nth-child(1):hover {
-  color: #000000; /* Para GitHub */
+  color: #000; /* LinkedIn */
 }
 
+@media (max-width: 1024px) {
+  .integrantesContainer {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .integranteCard {
+    width: calc(33.33% - 20px); /* Três colunas */
+  }
+}
+
+@media (max-width: 768px) {
+  .integrantesContainer {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .integranteCard {
+    width: calc(50% - 15px); /* Duas colunas */
+  }
+}
+
+@media (max-width: 480px) {
+  .integrantesContainer {
+    padding: 5px;
+    gap: 10px;
+  }
+
+  .integranteCard {
+    width: 100%; /* Uma coluna */
+  }
+}
