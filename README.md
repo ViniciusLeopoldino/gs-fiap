@@ -87,7 +87,6 @@ Se tiver dúvidas ou sugestões, entre em contato:
 - LinkedIn: [linkedin.com/in/vinicius](https://www.linkedin.com/in/vinicius-leopoldino-de-oliveira-9a2194120/)
 
 ## 🔖 Tags
-```
 #energia #iot #sustentabilidade #nextjs #oracle #saude #eficiencia #javascript #typescript #java #chakraui  
 
 
