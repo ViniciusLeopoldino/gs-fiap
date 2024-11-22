@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuLateral from '../MenuLateral/MenuLateral'; 
 import styles from './Layout.module.css'; 
-import Head from 'next/head'; // Importando o Head do Next.js
+import Head from 'next/head';
 
 interface LayoutProps {
   children: React.ReactNode; 
@@ -11,8 +11,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Porto Auto Check</title>
-        <meta name="description" content="Site Porto Auto Check" />
+        <title>Wise Power</title>
+        <meta name="description" content="Wise Power Web" />
       </Head>
       <div className={styles.container}>
         <MenuLateral />

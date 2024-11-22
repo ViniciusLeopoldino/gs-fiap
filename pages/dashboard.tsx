@@ -1,174 +1,106 @@
-import React, { useState } from 'react';
-import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
-import Footer from '../src/components/Footer/Footer';
+import React from 'react';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import Header from '../src/components/Header/Header';
-import styles from '../src/styles/pages/Dashboard.module.css';
-import Button from '../src/components/Button/Button';
-import Input from '../src/components/Input/Input';
+import Footer from '../src/components/Footer/Footer';
 import MenuLateral from '../src/components/MenuLateral/MenuLateral';
+import styles from '../src/styles/pages/Dashboard.module.css';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 
-const OficinaProxima: React.FC = () => {
-  const [cep, setCep] = useState('');
-  const [offices, setOffices] = useState<any[]>([]);
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false); 
-  const [selectedOffices, setSelectedOffices] = useState<number[]>([]); 
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
-  const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCep(e.target.value);
+const Dashboard: React.FC = () => {
+  const dadosSimulados = {
+    consumoEnergia: "12,5 MWh",
+    economiaMensal: "R$ 8.500,00",
+    consumoPorSetor: [
+      { setor: "Administração", consumo: 4.2 },
+      { setor: "Enfermaria", consumo: 3.1 },
+      { setor: "UTI", consumo: 5.2 },
+    ],
+    alertas: [
+      "Setor UTI com consumo acima da média",
+      "Equipamento X com funcionamento irregular",
+    ],
   };
 
-  const fetchCoordinates = async (cep: string) => {
-    if (cep.length !== 8) {
-      throw new Error('CEP deve ter 8 dígitos');
-    }
-
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    if (!response.ok) {
-      throw new Error('Falha ao buscar o endereço do ViaCEP');
-    }
-
-    const data = await response.json();
-
-    if (!data || !data.localidade || !data.uf) {
-      throw new Error('CEP inválido');
-    }
-
-    const address = `${data.logradouro}, ${data.localidade}, ${data.uf}`;
-    const geocodeResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`);
-    const geocodeData = await geocodeResponse.json();
-
-    if (geocodeData.status === "OK") {
-      const location = geocodeData.results[0].geometry.location;
-      return { lat: location.lat, lng: location.lng };
-    } else {
-      throw new Error(`Falha ao obter coordenadas do endereço: ${geocodeData.status}`);
-    }
+  // Dados do Gráfico de Barras (Consumo por Setor)
+  const barChartData = {
+    labels: dadosSimulados.consumoPorSetor.map((setor) => setor.setor),
+    datasets: [
+      {
+        label: 'Consumo de Energia (MWh)',
+        data: dadosSimulados.consumoPorSetor.map((setor) => setor.consumo),
+        backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
+      },
+    ],
   };
 
-  const fetchOffices = async (lat: number, lng: number) => {
-    const response = await fetch(`/api/oficinas?lat=${lat}&lng=${lng}&radius=5000`); // raio de 5km
-
-    if (!response.ok) {
-      throw new Error('Falha ao buscar as oficinas');
-    }
-
-    const data = await response.json();
-    if (data.offices) {
-      setOffices(data.offices);
-      setSelectedOffices([]); 
-    } else {
-      setOffices([]);
-      setError('Nenhuma oficina encontrada.');
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null); 
-    setLoading(true); 
-
-    try {
-      const coordinates = await fetchCoordinates(cep);
-      setLocation(coordinates);
-      await fetchOffices(coordinates.lat, coordinates.lng);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : 'Ocorreu um erro');
-    } finally {
-      setLoading(false); 
-    }
-  };
-
-  const handleCheckboxChange = (index: number) => {
-    setSelectedOffices(prevSelected => {
-      if (prevSelected.includes(index)) {
-        
-        return prevSelected.filter(i => i !== index);
-      } else {
-        
-        return [...prevSelected, index];
-      }
-    });
-  };
-
-  const handleLoadGPS = () => {
-    if (selectedOffices.length > 0) {
-      const office = offices[selectedOffices[0]]; 
-      const { lat, lng } = office.geometry.location;
-      // Redirecionar para o Google Maps
-      window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
-    } else {
-      alert('Selecione uma oficina para carregar a rota.');
-    }
+  // Dados do Gráfico de Rosca (Economia Mensal)
+  const doughnutChartData = {
+    labels: ['Economia', 'Consumo'],
+    datasets: [
+      {
+        data: [8.5, 12.5], // Economia e Consumo (valores simulados)
+        backgroundColor: ['#4caf50', '#f44336'],
+        hoverOffset: 4,
+      },
+    ],
   };
 
   return (
     <>
-      <Header title="Oficina Próxima" />
+      <Header title="Dashboard" />
       <div className={styles.container}>
         <MenuLateral />
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="cep">Digite seu CEP:</label>
-          <Input type="text" id="cep" name="cep" value={cep} onChange={handleCepChange} />
-          <Button type="submit" disabled={loading}>Pesquisar</Button>
-        </form>
+        <main className={styles.dashboardContent}>
+          <section className={styles.overview}>
+            <h2>Visão Geral</h2>
+            <div className={styles.cards}>
+              <div className={styles.card}>
+                <h3>Consumo de Energia</h3>
+                <p>{dadosSimulados.consumoEnergia}</p>
+              </div>
+              <div className={styles.card}>
+                <h3>Economia Mensal Estimada</h3>
+                <p>{dadosSimulados.economiaMensal}</p>
+              </div>
+              <div className={styles.card}>
+                <h3>Alertas</h3>
+                <ul>
+                  {dadosSimulados.alertas.map((alerta, index) => (
+                    <li key={index}>{alerta}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
 
-        
-        {error && <p className={styles.error}>{error}</p>}
-
-        
-        {offices.length > 0 && (
-          <div className={styles.officeContainer}>
-            <ul className={styles.officeList}>
-              {offices.map((office, index) => (
-                <li key={index}>
-                  <input
-                    type="checkbox"
-                    checked={selectedOffices.includes(index)}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                  {office.name} - {office.geometry.location.lat}, {office.geometry.location.lng}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        
-        {location && (
-          <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}>
-          <GoogleMap
-            mapContainerStyle={{ width: '100%', height: '300px' }} 
-            center={{ lat: location.lat, lng: location.lng }}
-            zoom={10} 
-          >
-            {offices.length > 0 ? (
-              offices.map((office, index) => (
-                <Marker
-                  key={index}
-                  position={{
-                    lat: office.geometry.location.lat,
-                    lng: office.geometry.location.lng,
-                  }}
-                  title={office.name}
-                />
-              ))
-            ) : (
-              <Marker position={location} title="Você está aqui" />
-            )}
-          </GoogleMap>
-        </LoadScript>
-        
-        )}
-
-        {loading && <p>Carregando...</p>}
-
-        <Button onClick={handleLoadGPS}>Carregar GPS</Button>
+          <section className={styles.charts}>
+            <h2>Gráficos</h2>
+            <div className={styles.chartContainer}>
+              <h3>Consumo por Setor</h3>
+              <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
+            </div>
+            <div className={styles.chartContainer}>
+              <h3>Economia Mensal</h3>
+              <Doughnut data={doughnutChartData} options={{ responsive: true, maintainAspectRatio: false }} />
+            </div>
+          </section>
+        </main>
       </div>
       <Footer />
     </>
   );
 };
 
-export default OficinaProxima;
+export default Dashboard;
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Importando ícones do GitHub e LinkedIn
 import styles from './Integrantes.module.css';
 
 interface Integrante {
@@ -25,12 +26,12 @@ const Integrantes: React.FC<IntegrantesProps> = ({ integrantes }) => {
           />
           <h3>{integrante.name}</h3>
           <p>RM: {integrante.rm}</p>
-          <div>
-            <a href={integrante.github} target="_blank" rel="noopener noreferrer">
-              GitHub
+          <div className={styles.socialLinks}>
+            <a href={integrante.github} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+              <FaGithub size={24} /> {/* Ícone do GitHub */}
             </a>
-            <a href={integrante.linkedin} target="_blank" rel="noopener noreferrer">
-              LinkedIn
+            <a href={integrante.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+              <FaLinkedin size={24} /> {/* Ícone do LinkedIn */}
             </a>
           </div>
         </div>
@@ -40,3 +41,4 @@ const Integrantes: React.FC<IntegrantesProps> = ({ integrantes }) => {
 };
 
 export default Integrantes;
+

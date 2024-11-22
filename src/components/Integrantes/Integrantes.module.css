@@ -1,30 +1,47 @@
-.main {
-  display: flex;
-}
-.content {
-  flex: 1;
-  padding: 20px;
-}
-
 .integrantesContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin-left: 200px; 
+  width: calc(100% - 200px); 
 }
 
 .integranteCard {
-  background-color: #f9f9f9;
-  border-radius: 10px;
+  color: #fff;
+  background-color: #003350;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  text-align: center;
   width: 200px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .integranteImage {
-  width: 100%;
+  border-radius: 50%;
+  width: 150px;
   height: 150px;
-  border-radius: 10px;
   object-fit: cover;
+  margin-bottom: 10px;
 }
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socialIcon {
+  color: #fff;
+  text-decoration: none;
+}
+
+.socialIcon:hover {
+  color: #000000; /* Para LinkedIn */
+}
+
+.socialIcon:nth-child(1):hover {
+  color: #000000; /* Para GitHub */
+}
+
