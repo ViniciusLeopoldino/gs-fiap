@@ -1,8 +1,5 @@
   .container {
     text-align: center;
-    /* border: #003350; */
-    /* border-radius: 5px; */
-    /* border-color: #003350; */
     border: 2px solid #003350;
     padding: 10px;
     border-radius: 50px;
@@ -38,10 +35,21 @@
     margin-top: 0px;
   }
 
+   .loginImage:hover {
+    /* transform: translateY(-8px); */
+    /* transform: translateX(-8px); */
+    /* transform: rotate(190deg); */
+    /* transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); */
+    transform: translate3d(0, 0, 0);
+    height: 100px;
+    width: 100px;
+  }
+
   @media only screen and (max-width: 768px) {
     .container {
-      width: 80%;
-      padding: 30px;
+      /* width: 80%; */
+      /* padding: 30px; */
+      margin-left: 50px;
     }
   
     .inputGroup {

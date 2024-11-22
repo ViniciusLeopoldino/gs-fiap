@@ -5,9 +5,10 @@
   border: 2px solid #003350; /* Cor principal */
   color: #333; /* Cor do texto */
   padding: 1rem;
-  border-radius: 20px; /* Bordas arredondadas */
+  border-radius: 50px; /* Bordas arredondadas */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
-  margin-left: 200px;
+  margin-left: 255px;
+  margin-right: 5px;
   transition: 0.3s ease-in-out; /* Transição suave */
 }
 
