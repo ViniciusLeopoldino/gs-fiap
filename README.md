@@ -1,6 +1,6 @@
 # Sistema de Gestão Energética para Clínicas e Hospitais  
 
-![Gestão Energética]([https://via.placeholder.com/800x300.png?text=Gestão+Energética+Inteligente](https://gs-fiap-zeta.vercel.app/home))  
+![Gestão Energética](https://gs-fiap-zeta.vercel.app/home)  
 
 ## 📖 Descrição do Projeto  
 O **Sistema de Gestão Energética para Clínicas e Hospitais** é uma plataforma integrada desenvolvida para monitorar, analisar e otimizar o consumo de energia elétrica em tempo real.  
